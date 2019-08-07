@@ -48,6 +48,7 @@
   height: 50px;
   overflow: hidden;
   box-shadow: 2px 2px 2px lightgrey;
+  transition: ease-in 0.333s all;
 }
 .article h2 {
   font-size: 28px;
@@ -75,6 +76,7 @@
 }
 .article-open {
   height: 400px;
+  transition: ease-in 0.333s all;
 }
 .menu-button {
   position: absolute;
@@ -82,7 +84,10 @@
   cursor: pointer;
 }
 .menu {
-  display: none;
+  display: block;
+  opacity: 0.5;
+  transition: ease-in 0.15s all;
+  transform: translateX(-100%);
   position: fixed;
   top: 75px;
   left: 0;
@@ -104,6 +109,9 @@
 }
 .menu--open {
   display: block;
+  opacity: 1;
+  transition: ease-in 0.15s all;
+  transform: translateX(0);
 }
 html,
 body {

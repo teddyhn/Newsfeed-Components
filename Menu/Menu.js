@@ -50,7 +50,21 @@ function createMenu(items) {
   let menuButton = document.querySelector('.menu-button');
 
   menuButton.addEventListener('click', evt => {
-    menu.classList.toggle('menu--open')
+    menu.classList.toggle('menu--open');
+    evt.stopPropagation();
+  });
+
+  // Click anywhere to close menu
+  let html = document.querySelector('html');
+
+  html.addEventListener('click', evt => {
+    if (menu.classList.contains('menu--open')) {
+      menu.classList.toggle('menu--open')
+    }
+  });
+
+  menu.addEventListener('click', evt => {
+    evt.stopPropagation();
   });
 
   return menu;
@@ -59,3 +73,4 @@ function createMenu(items) {
 let header = document.querySelector('.header');
 
 header.appendChild(createMenu(menuItems));
+
