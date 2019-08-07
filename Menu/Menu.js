@@ -63,6 +63,7 @@ function createMenu(items) {
     }
   });
 
+  // Except for on the menu
   menu.addEventListener('click', evt => {
     evt.stopPropagation();
   });
