@@ -85,7 +85,14 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+  {
+    title: 'Fresh Copypasta',
+    date: 'June 9th, 2019',
+    firstParagraph: `Do I have any questions? Unless you are a published theoretical physicist and have earned a Master of Science and two PhDs, have an IQ of 187, and went to college at 11, research String Theory at Caltech, switched disciplines from bosonic string theory to heterotic string theory and reconciled the black hole information paradox using a string network condensate approach, worked on the string theory implications of gamma rays from dark matter annihilations and considered a method for optimizing a 500 GeV particle detector to this end, jointly wrote a paper on supersolids to be presented at an Institute of Experimental Physics topical conference on Bose-Einstein condensates, keep a whiteboard in the living room for scientific theories containing virtual particles in quantum mechanics or series of Riemann zeta functions, then no I will not ask you any questions`,
+    secondParagraph: `If me 🤠 or my kids 🧒🧒 are under siege 💥😱 by 30-50 hogs 🐗🐗 in 3-5 minutes 🕒🕔 and only one1️⃣1️⃣could survive💀🏥 then you can catch me in the mud😳💩 getting feral 😈😩😏 with the tribe 🐗🐽`,
+    thirdParagraph: `Hi there, I was really hoping that we could postpone the raid. I really want to see the aliens but I have to take my cat to the vet on September 20. I just really hope the government isn't forced to spend increasing amounts of money on defense while we keep postponing. Maybe postponing will give us more time to plan our alien parties! Postponing could even give more time for more people to sign up, while we take our time to figure out a day that better works for everyone, but lets keep up the planning please!`
+  },
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -112,3 +119,47 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+let articles = document.querySelector('.articles')
+
+data.forEach(datum => {
+  articles.appendChild(createArticle(datum.title, datum.date, datum.firstParagraph, datum.secondParagraph, datum.thirdParagraph))
+});
+
+
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  let article = document.createElement('div');
+  let title1 = document.createElement('h2');
+  let date1 = document.createElement('p');
+  let firstParagraph1 = document.createElement('p');
+  let secondParagraph1 = document.createElement('p');
+  let thirdParagraph1 = document.createElement('p');
+  let button = document.createElement('span');
+
+  article.appendChild(title1);
+  article.appendChild(date1);
+  article.appendChild(firstParagraph1);
+  article.appendChild(secondParagraph1);
+  article.appendChild(thirdParagraph1);
+  article.appendChild(button);
+
+  article.classList.add('article');
+  date1.classList.add('date');
+  button.classList.add('expandButton');
+
+  title1.textContent = title;
+  date1.textContent = date;
+  firstParagraph1.textContent = firstParagraph;
+  secondParagraph1.textContent = secondParagraph;
+  thirdParagraph1.textContent = thirdParagraph;
+  button.textContent = 'Click to Expand';
+
+  button.addEventListener('click', evt => {
+    article.classList.toggle('article-open');
+    if (article.classList.contains('article-open')) {
+      button.textContent = 'Click to Close';
+    } else button.textContent = 'Click to Expand';
+  });
+
+  return article;
+}
